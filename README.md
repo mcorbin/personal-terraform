@@ -5,7 +5,7 @@ This terraform configuration deploys the infrastructure for my personal websites
 ## How to use
 
 Source this file:
-w
+
 ```
 export TF_VAR_exoscale_api_key=<your key>
 export TF_VAR_exoscale_secret_key=<tour secret>
