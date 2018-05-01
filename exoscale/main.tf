@@ -20,7 +20,7 @@ module "frontend" {
 
 module "tour_of_clj" {
   source = "../modules/exoscale/compute"
-  instances_count = 2
+  instances_count = 1
 
   name = "tour-clj"
   zone = "ch-dk-2"
