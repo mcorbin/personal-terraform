@@ -1,6 +1,6 @@
 # My infrastructure
 
-This terraform configuration deploys the infrastructure for my personal websites (mcorbin.fr, tour.mcorbin.fr) on Exoscale (https://www.exoscale.com/)
+This terraform configuration deploys the infrastructure for my personal websites (mcorbin.fr, tour.mcorbin.fr, meuse.mcorbin.fr...) on Exoscale (https://www.exoscale.com/)
 
 ## How to use
 

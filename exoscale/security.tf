@@ -1,72 +1,66 @@
-
 resource "exoscale_ssh_keypair" "dell" {
-  name = "dell"
-  public_key = "${file(var.ssh_public_key_path)}"
+  name       = "dell"
+  public_key = file(var.ssh_public_key_path)
 }
 
 # common
 
 resource "exoscale_security_group" "common" {
-  name = "common"
+  name        = "common"
   description = "Common security group"
 
-  tags {
-    kind = "common"
-  }
 }
 
 resource "exoscale_security_group_rule" "ssh_in" {
-  security_group_id = "${exoscale_security_group.common.id}"
-  protocol = "TCP"
-  type = "INGRESS"
-  cidr = "0.0.0.0/0"
-  start_port = 22
-  end_port = 22
+  security_group_id = exoscale_security_group.common.id
+  protocol          = "TCP"
+  type              = "INGRESS"
+  cidr              = "0.0.0.0/0"
+  start_port        = 22
+  end_port          = 22
 }
 
 resource "exoscale_security_group_rule" "http_out" {
-  security_group_id = "${exoscale_security_group.common.id}"
-  protocol = "TCP"
-  type = "EGRESS"
-  cidr = "0.0.0.0/0"
-  start_port = 80
-  end_port = 80
+  security_group_id = exoscale_security_group.common.id
+  protocol          = "TCP"
+  type              = "EGRESS"
+  cidr              = "0.0.0.0/0"
+  start_port        = 80
+  end_port          = 80
 }
 
 resource "exoscale_security_group_rule" "https_out" {
-  security_group_id = "${exoscale_security_group.common.id}"
-  protocol = "TCP"
-  type = "EGRESS"
-  cidr = "0.0.0.0/0"
-  start_port = 443
-  end_port = 443
+  security_group_id = exoscale_security_group.common.id
+  protocol          = "TCP"
+  type              = "EGRESS"
+  cidr              = "0.0.0.0/0"
+  start_port        = 443
+  end_port          = 443
 }
 
 # frontend
 
 resource "exoscale_security_group" "frontend" {
-  name = "frontend"
+  name        = "frontend"
   description = "Frontend security group"
 
-  tags {
-    kind = "frontend"
-  }
 }
 
 resource "exoscale_security_group_rule" "http_in" {
-  security_group_id = "${exoscale_security_group.frontend.id}"
-  protocol = "TCP"
-  type = "INGRESS"
-  cidr = "0.0.0.0/0"
-  start_port = 80
-  end_port = 80
+  security_group_id = exoscale_security_group.frontend.id
+  protocol          = "TCP"
+  type              = "INGRESS"
+  cidr              = "0.0.0.0/0"
+  start_port        = 80
+  end_port          = 80
 }
 
 resource "exoscale_security_group_rule" "https_in" {
-  security_group_id = "${exoscale_security_group.frontend.id}"
-  protocol = "TCP"
-  type = "INGRESS"
-  cidr = "0.0.0.0/0"
-  start_port = 443
-  end_port = 443
+  security_group_id = exoscale_security_group.frontend.id
+  protocol          = "TCP"
+  type              = "INGRESS"
+  cidr              = "0.0.0.0/0"
+  start_port        = 443
+  end_port          = 443
 }
+

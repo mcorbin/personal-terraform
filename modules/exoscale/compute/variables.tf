@@ -6,7 +6,7 @@ variable "name" {
 }
 
 variable "zone" {
-  default = "ch-dk-2"
+  default = "ch-gva-2"
 }
 
 variable "size" {
@@ -21,7 +21,7 @@ variable "key_pair_name" {
 }
 
 variable "security_groups" {
-  type = "list"
+  type = list(string)
 }
 
 variable "image_template" {
@@ -33,7 +33,6 @@ variable "state" {
 }
 
 variable "private_network_id" {
-
 }
 
 variable "ansible_groups" {
@@ -42,4 +41,8 @@ variable "ansible_groups" {
 
 variable "ip_start" {
   default = 1
+}
+
+output "instances_output" {
+  value = exoscale_compute.instance.*.id
 }
