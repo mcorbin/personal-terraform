@@ -6,7 +6,7 @@ module "frontend" {
   zone               = "ch-gva-2"
   size               = "Micro"
   disk_size          = 10
-  key_pair_name      = exoscale_ssh_keypair.dell.name
+  key_pair_name      = exoscale_ssh_keypair.perso.name
   security_groups    = [exoscale_security_group.common.name, exoscale_security_group.frontend.name]
   image_template     = "Linux Debian 10 (Buster) 64-bit"
   private_network_id = exoscale_network.production.id
@@ -31,7 +31,7 @@ module "tour_of_clj" {
   zone               = "ch-gva-2"
   size               = "Small"
   disk_size          = 10
-  key_pair_name      = exoscale_ssh_keypair.dell.name
+  key_pair_name      = exoscale_ssh_keypair.perso.name
   security_groups    = [exoscale_security_group.common.name]
   image_template     = "Linux Debian 10 (Buster) 64-bit"
   private_network_id = exoscale_network.production.id
@@ -49,7 +49,7 @@ module "blog" {
   zone               = "ch-gva-2"
   size               = "Small"
   disk_size          = 10
-  key_pair_name      = exoscale_ssh_keypair.dell.name
+  key_pair_name      = exoscale_ssh_keypair.perso.name
   security_groups    = [exoscale_security_group.common.name]
   image_template     = "Linux Debian 10 (Buster) 64-bit"
   private_network_id = exoscale_network.production.id

@@ -8,7 +8,7 @@ Source this file:
 
 ```
 export TF_VAR_exoscale_api_key=<your key>
-export TF_VAR_exoscale_secret_key=<tour secret>
+export TF_VAR_exoscale_secret_key=<your secret>
 
 export AWS_ACCESS_KEY_ID=${TF_VAR_exoscale_api_key}
 export AWS_SECRET_ACCESS_KEY=${TF_VAR_exoscale_secret_key}

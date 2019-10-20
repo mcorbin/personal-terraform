@@ -1,5 +1,5 @@
-resource "exoscale_ssh_keypair" "dell" {
-  name       = "dell"
+resource "exoscale_ssh_keypair" "perso" {
+  name       = "perso"
   public_key = file(var.ssh_public_key_path)
 }
 
