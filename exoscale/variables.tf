@@ -1,8 +1,3 @@
-variable "ssh_private_key_path" {
-  description = "Path to the ssh private key"
-  default     = "/home/mathieu/.ssh/id_rsa"
-}
-
 variable "ssh_public_key_path" {
   description = "Path to the ssh public key"
   default     = "/home/mathieu/.ssh/id_rsa.pub"
