@@ -2,7 +2,7 @@ resource "exoscale_compute" "instance" {
   count = var.instances_count
 
   display_name = "${var.name}-${count.index}"
-  template     = var.image_template
+  template_id  = var.image_template_id
   state        = var.state
 
   zone = var.zone

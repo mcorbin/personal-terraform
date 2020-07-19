@@ -24,8 +24,8 @@ variable "security_groups" {
   type = list(string)
 }
 
-variable "image_template" {
-  default = "Linux Debian 9 64-bit"
+variable "image_template_id" {
+  default = "b7ce66da-8bd1-4a02-8788-0bd880038b01"
 }
 
 variable "state" {
