@@ -16,8 +16,3 @@ variable "exoscale_zone" {
   default     = "ch-gva-2"
 }
 
-variable "exoscale_template_id" {
-  description = "Base template"
-  default     = "c00df33a-df5b-47d2-b9c8-a2eee9ef24a3"
-}
-

@@ -3,64 +3,38 @@ resource "exoscale_ssh_keypair" "perso" {
   public_key = file(var.ssh_public_key_path)
 }
 
-# common
+# kube
 
-resource "exoscale_security_group" "common" {
-  name        = "common"
-  description = "Common security group"
+resource "exoscale_security_group" "personal_sks" {
+  name        = "personal-sks"
+  description = "SKS security group for my personal infra"
 
 }
 
-resource "exoscale_security_group_rule" "ssh_in" {
-  security_group_id = exoscale_security_group.common.id
+resource "exoscale_security_group_rule" "nodeport_services" {
+  security_group_id = exoscale_security_group.personal_sks.id
   protocol          = "TCP"
   type              = "INGRESS"
   cidr              = "0.0.0.0/0"
-  start_port        = 22
-  end_port          = 22
+  start_port        = 30000
+  end_port          = 32767
 }
 
-resource "exoscale_security_group_rule" "http_out" {
-  security_group_id = exoscale_security_group.common.id
-  protocol          = "TCP"
-  type              = "EGRESS"
-  cidr              = "0.0.0.0/0"
-  start_port        = 80
-  end_port          = 80
-}
-
-resource "exoscale_security_group_rule" "https_out" {
-  security_group_id = exoscale_security_group.common.id
-  protocol          = "TCP"
-  type              = "EGRESS"
-  cidr              = "0.0.0.0/0"
-  start_port        = 443
-  end_port          = 443
-}
-
-# frontend
-
-resource "exoscale_security_group" "frontend" {
-  name        = "frontend"
-  description = "Frontend security group"
-
-}
-
-resource "exoscale_security_group_rule" "http_in" {
-  security_group_id = exoscale_security_group.frontend.id
+resource "exoscale_security_group_rule" "kubelet" {
+  security_group_id = exoscale_security_group.personal_sks.id
   protocol          = "TCP"
   type              = "INGRESS"
   cidr              = "0.0.0.0/0"
-  start_port        = 80
-  end_port          = 80
+  start_port        = 10250
+  end_port          = 10250
 }
 
-resource "exoscale_security_group_rule" "https_in" {
-  security_group_id = exoscale_security_group.frontend.id
-  protocol          = "TCP"
+resource "exoscale_security_group_rule" "calico" {
+  security_group_id = exoscale_security_group.personal_sks.id
+  protocol          = "UDP"
   type              = "INGRESS"
-  cidr              = "0.0.0.0/0"
-  start_port        = 443
-  end_port          = 443
+  user_security_group_id = exoscale_security_group.personal_sks.id
+  start_port        = 4789
+  end_port          = 4789
 }
 

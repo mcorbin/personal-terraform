@@ -4,7 +4,6 @@ provider "exoscale" {
 }
 
 provider "aws" {
-  version = "~> 2.16"
   region = var.exoscale_zone
   access_key = var.exoscale_api_key
   secret_key = var.exoscale_secret_key
